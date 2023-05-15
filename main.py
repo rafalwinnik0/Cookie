@@ -27,19 +27,20 @@ with webdriver.Chrome(service=service) as driver:
         #time.sleep(0.001)
         if time.localtime()[5] % 5 == 0:
             while driver.find_element(By.ID, "money").text >= 15:
-                if int(driver.find_element(By.ID, "money").text) >= 123456789:
+                money = driver.find_element(By.ID, "money").text
+                if int(money.text) >= 123456789:
                     buy_time_machine.click()
-                elif int(driver.find_element(By.ID, "money").text) >= 1000000:
+                elif int(money.text) >= 1000000:
                     buy_portal.click()
-                elif int(driver.find_element(By.ID, "money").text) >= 50000:
+                elif int(money.text) >= 50000:
                     buy_alchemy_lab.click()
-                elif int(driver.find_element(By.ID, "money").text) >= 7000:
+                elif int(money.text) >= 7000:
                     buy_shipment.click()
-                elif int(driver.find_element(By.ID, "money").text) >= 2000:
+                elif int(money.text) >= 2000:
                     buy_mine.click()
-                elif int(driver.find_element(By.ID, "money").text) >= 500:
+                elif int(money.text) >= 500:
                     buy_factory.click()
-                elif int(driver.find_element(By.ID, "money").text) >= 100:
+                elif int(money.text) >= 100:
                     buy_grandma.click()
                 else:
                     buy_cursor.click()
