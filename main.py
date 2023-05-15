@@ -14,36 +14,47 @@ with webdriver.Chrome(service=service) as driver:
     driver.get("http://orteil.dashnet.org/experiments/cookie/")
 
     cookie = driver.find_element(By.ID, "cookie")
-    buy_cursor = driver.find_element(By.ID, "buyCursor")
-    buy_grandma = driver.find_element(By.ID, "buyGrandma")
-    buy_factory = driver.find_element(By.ID, "buyFactory")
-    buy_mine = driver.find_element(By.ID, "buyMine")
-    buy_shipment = driver.find_element(By.ID, "buyShipment")
-    buy_alchemy_lab = driver.find_element(By.ID, "buyAlchemy lab")
-    buy_portal = driver.find_element(By.ID, "buyPortal")
-    buy_time_machine = driver.find_element(By.ID, "buyTime machine")
 
     while time.time() <= timeout:
-        #time.sleep(0.001)
+        time.sleep(0.001)
         if time.localtime()[5] % 5 == 0:
-            while driver.find_element(By.ID, "money").text >= 15:
+            while int(driver.find_element(By.ID, "money").text) >= 15:
                 money = driver.find_element(By.ID, "money").text
-                if int(money.text) >= 123456789:
+                buy_cursor = driver.find_element(By.ID, "buyCursor")
+                buy_grandma = driver.find_element(By.ID, "buyGrandma")
+                buy_factory = driver.find_element(By.ID, "buyFactory")
+                buy_mine = driver.find_element(By.ID, "buyMine")
+                buy_shipment = driver.find_element(By.ID, "buyShipment")
+                buy_alchemy_lab = driver.find_element(By.ID, "buyAlchemy lab")
+                buy_portal = driver.find_element(By.ID, "buyPortal")
+                buy_time_machine = driver.find_element(By.ID, "buyTime machine")
+                buy_grandma = driver.find_element(By.ID, "buyGrandma")
+                if int(money) >= 123456789:
                     buy_time_machine.click()
-                elif int(money.text) >= 1000000:
+                    print("buy_time_machine.click()")
+                elif int(money) >= 1000000:
                     buy_portal.click()
-                elif int(money.text) >= 50000:
+                    print("buy_portal.click()")
+                elif int(money) >= 50000:
                     buy_alchemy_lab.click()
-                elif int(money.text) >= 7000:
+                    print("buy_alchemy_lab.click()")
+                elif int(money) >= 7000:
                     buy_shipment.click()
-                elif int(money.text) >= 2000:
+                    print("buy_shipment.click()")
+                elif int(money) >= 2000:
                     buy_mine.click()
-                elif int(money.text) >= 500:
+                    print("buy_mine.click()")
+                elif int(money) >= 500:
                     buy_factory.click()
-                elif int(money.text) >= 100:
+                    print("buy_factory.click()")
+                elif int(money) >= 100:
                     buy_grandma.click()
+                    print("buy_grandma.click()")
                 else:
                     buy_cursor.click()
+                    print("buy_cursor.click()")
+                time.sleep(0.1)
         else:
             cookie.click()
+
         digit = time.localtime()[5]
