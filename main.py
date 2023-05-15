@@ -29,6 +29,8 @@ with webdriver.Chrome(service=service) as driver:
                 buy_portal = driver.find_element(By.ID, "buyPortal")
                 buy_time_machine = driver.find_element(By.ID, "buyTime machine")
                 buy_grandma = driver.find_element(By.ID, "buyGrandma")
+                # i have to put the find_elements into while loop otherwise after second entered the while loop program crash
+                # with find_element.click() error
                 if int(money) >= 123456789:
                     buy_time_machine.click()
                     print("buy_time_machine.click()")
@@ -53,7 +55,7 @@ with webdriver.Chrome(service=service) as driver:
                 else:
                     buy_cursor.click()
                     print("buy_cursor.click()")
-                time.sleep(0.1)
+                time.sleep(0.1) # program crash without time.sleep()
         else:
             cookie.click()
 
